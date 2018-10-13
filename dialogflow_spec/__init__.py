@@ -12,44 +12,34 @@ def _parse_request():
 
 _bigass_json = """
 {
-  "responseId": "ea3d77e8-ae27-41a4-9e1d-174bd461b68c",
-  "session": "projects/your-agents-project-id/agent/sessions/88d13aa8-2999-4f71-b233-39cbf3a824a0",
+  "responseId": "13da0ef3-cb05-400d-a662-2f27ec00fb62",
   "queryResult": {
-    "queryText": "user's original query to your agent",
+    "queryText": "make a sandwich for john",
     "parameters": {
-      "country": "Poland"
+      "given-name": "John"
     },
     "allRequiredParamsPresent": true,
-    "fulfillmentText": "Text defined in Dialogflow's console for the intent that was matched",
     "fulfillmentMessages": [
       {
         "text": {
           "text": [
-            "Text defined in Dialogflow's console for the intent that was matched"
+            ""
           ]
         }
       }
     ],
-    "outputContexts": [
-      {
-        "name": "projects/your-agents-project-id/agent/sessions/88d13aa8-2999-4f71-b233-39cbf3a824a0/contexts/generic",
-        "lifespanCount": 5,
-        "parameters": {
-          "param": "param value"
-        }
-      }
-    ],
     "intent": {
-      "name": "projects/your-agents-project-id/agent/intents/29bcd7f8-f717-4261-a8fd-2d3e451b8af8",
-      "displayName": "Matched Intent Name"
+      "name": "projects/custom-chatbot-85073/agent/intents/fd8a70ca-1e34-4201-acdb-37139c07e5a4",
+      "displayName": "insult-person"
     },
     "intentDetectionConfidence": 1,
-    "diagnosticInfo": {},
     "languageCode": "en"
   },
-  "originalDetectIntentRequest": {}
-}
-"""
+  "originalDetectIntentRequest": {
+    "payload": {}
+  },
+  "session": "projects/custom-chatbot-85073/agent/sessions/9f62edd8-6323-b183-0b7c-ef530b7ea349"
+}"""
 
 
 def make_response(display_message, tts_message):

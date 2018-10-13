@@ -22,7 +22,12 @@ def __hhhandler(intent, **params):
 
 @app.route('/api/demo', methods=['POST'])
 def _post_handler():
-    request_data = json.loads(request.get_json())
+    request_data = request.get_json()
+    print(f"req_json type = {type(request_data)}\n {request_data}")
+
+    if isinstance(request_data, str):
+        request_data = json.loads(request_data)
+
     pprint(request_data)
     intent = request_data['queryResult']['intent']['name']
     params = request_data['queryResult']['parameters']
