@@ -3,6 +3,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# gcloud
+.gcloudignore
+
 # C extensions
 *.so
 
