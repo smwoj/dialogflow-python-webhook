@@ -10,6 +10,7 @@ from flask import jsonify
 def _parse_request():
     return {'country': 'Poland'}
 
+
 _bigass_json = """
 {
   "responseId": "13da0ef3-cb05-400d-a662-2f27ec00fb62",
@@ -30,7 +31,7 @@ _bigass_json = """
     ],
     "intent": {
       "name": "projects/custom-chatbot-85073/agent/intents/fd8a70ca-1e34-4201-acdb-37139c07e5a4",
-      "displayName": "insult-person"
+      "displayName": "hello_api_intent"
     },
     "intentDetectionConfidence": 1,
     "languageCode": "en"
