@@ -4,7 +4,7 @@ import _constants as const
 _INTENTS = {}
 
 
-def register_intent(intent_name):
+def register_intent(intent_name):  # add option - interface=choice['basic', 'full']
 
     def registerer(intent_handler):
         _INTENTS[intent_name] = intent_handler

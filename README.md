@@ -13,7 +13,7 @@ and forwards the utterance to the DialogFlow agent.
 DialogFlow performs NLU and attempts to match an intent defined for a given agent (agents are in 1:1 relation to Google Assistant).
 
 Intents are defined within the DialogFlow agent. Intent definition requires training utterances (obviously), 
-slots definition and fullfillment method, which is called when a user utters a sentence matching this intent.
+slots definition and fulfillment method, which is called when a user utters a sentence matching this intent.
 
 One of the fulfillment possibilities is providing your own webhook. Dialogflow will send a POST request to a webservice you provide.
 This request will contain all the data related to the user's utterance (full utterance, matched slots, conversation id and others).
