@@ -6,7 +6,7 @@ from _api_dispatcher import import_intent_handlers
 
 """
 Usage: 
-python main.py /api/$API_ENDPOINT
+python main.py $API_ENDPOINT
 """
 
 
@@ -25,7 +25,7 @@ def start(api_endpoint):
     @app.route(f'/api/{api_endpoint}', methods=['POST'])
     def _api_dispatcher():
         request_data = request.get_json()
-        request_data = json.loads(request_data)
+        # request_data = json.loads(request_data)
 
         pprint.pprint(request_data)
 
@@ -36,8 +36,8 @@ def start(api_endpoint):
 
         from dialogflow_spec import make_response
         return make_response(
-            display_message=msg,
-            tts_message="And this should be read.",
+            display_message='',
+            tts_message=msg,
         )
 
     app.run(debug=True, host=const.HOST, port=const.PORT)

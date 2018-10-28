@@ -6,6 +6,7 @@
 
 from flask import jsonify
 
+
 # INPUT REQUEST
 def _parse_request():
     return {'country': 'Poland'}
@@ -13,25 +14,16 @@ def _parse_request():
 
 _bigass_json = """
 {
-  "responseId": "13da0ef3-cb05-400d-a662-2f27ec00fb62",
+  "responseId": "6e008853-aefd-4d18-b7c2-0f945cd91bb3",
   "queryResult": {
-    "queryText": "make a sandwich for john",
+    "queryText": "tell me a silly joke",
     "parameters": {
-      "given-name": "John"
+      "joke-type": "silly"
     },
     "allRequiredParamsPresent": true,
-    "fulfillmentMessages": [
-      {
-        "text": {
-          "text": [
-            ""
-          ]
-        }
-      }
-    ],
     "intent": {
-      "name": "projects/custom-chatbot-85073/agent/intents/fd8a70ca-1e34-4201-acdb-37139c07e5a4",
-      "displayName": "hello_api_intent"
+      "name": "projects/hackathon-app-220820/agent/intents/5a6f8efc-90b4-4f8a-bb84-a17b7aad2c55",
+      "displayName": "joke-teller"
     },
     "intentDetectionConfidence": 1,
     "languageCode": "en"
@@ -39,8 +31,9 @@ _bigass_json = """
   "originalDetectIntentRequest": {
     "payload": {}
   },
-  "session": "projects/custom-chatbot-85073/agent/sessions/9f62edd8-6323-b183-0b7c-ef530b7ea349"
-}"""
+  "session": "projects/hackathon-app-220820/agent/sessions/6a5cac36-1994-f60d-cc60-e7721112ffa8"
+}
+"""
 
 
 def make_response(display_message, tts_message):
@@ -64,63 +57,3 @@ def make_response(display_message, tts_message):
         },
     }
     return jsonify(response)
-
-
-# RESPONSE EXAMPLE
-# """
-# {
-#   "fulfillmentText": "This is a text response",
-#   "fulfillmentMessages": [
-#     {
-#       "card": {
-#         "title": "card title",
-#         "subtitle": "card text",
-#         "imageUri": "https://assistant.google.com/static/images/molecule/Molecule-Formation-stop.png",
-#         "buttons": [
-#           {
-#             "text": "button text",
-#             "postback": "https://assistant.google.com/"
-#           }
-#         ]
-#       }
-#     }
-#   ],
-#   "source": "example.com",
-#   "payload": {
-#     "google": {
-#       "expectUserResponse": true,
-#       "richResponse": {
-#         "items": [
-#           {
-#             "simpleResponse": {
-#               "textToSpeech": "this is a simple response"
-#             }
-#           }
-#         ]
-#       }
-#     },
-#     "facebook": {
-#       "text": "Hello, Facebook!"
-#     },
-#     "slack": {
-#       "text": "This is a text response for Slack."
-#     }
-#   },
-#   "outputContexts": [
-#     {
-#       "name": "projects/${PROJECT_ID}/agent/sessions/${SESSION_ID}/contexts/context name",
-#       "lifespanCount": 5,
-#       "parameters": {
-#         "param": "param value"
-#       }
-#     }
-#   ],
-#   "followupEventInput": {
-#     "name": "event name",
-#     "languageCode": "en-US",
-#     "parameters": {
-#       "param": "param value"
-#     }
-#   }
-# }
-# """

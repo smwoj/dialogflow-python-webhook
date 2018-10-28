@@ -16,9 +16,9 @@ def register_intent(intent_name):  # add option - interface=choice['basic', 'ful
 def _execute_submodules(api_endpoint):
     api_handlers_pattern = os.path.join(const.ROOT, api_endpoint, '*')
 
-    for filepath in (fp for fp in glob.glob(api_handlers_pattern)
-                     if not fp.endswith('__init__.py')):
-        module_name = os.path.split(filepath)[1].strip('.py')
+    for file_path in (fp for fp in glob.glob(api_handlers_pattern)
+                      if not fp.endswith('__init__.py')):
+        module_name = os.path.split(file_path)[1].strip('.py')
         importlib.import_module(api_endpoint + '.' + module_name)
 
 
