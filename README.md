@@ -32,20 +32,42 @@ You can deploy it with Google AppEngine, Heroku or any other way you like,
 but if you're doing this for fun, probably the simplest solution is using 
 [ngrok](https://ngrok.com/) and running the service locally.
 
-# How to make my own Google Assistant "skill" with this repo?
-1. Create a GCloud account and enable billing. 
-There's a generous trial mode, so even though you have to register using your credit card,
+# How to make my own Google Assistant Action with this repo?
+1. Create a virtual environment from src/requirements.txt
+
+2. Create a GCloud account and enable billing.
+There's a generous trial period, so even though you have to register using your credit card,
 you won't be charged unless you agree to when the trial ends or you exhaust the limits.
 
-2. Create a new project in [https://console.actions.google.com/?pli=1](actions console).
+3. Create a new project in [actions console](https://console.actions.google.com/).
 Skip the choice of the action template (assuming you still want to use this project).
 
-3. You'll be moved to your new action's dashboard. You can set up a an action invocation here, test the action (later on) 
-and set up the action implementation. Move to Actions - Add your first action - (Custom Intent) Build.
-You will land on the new Dialogflow agent creation page.
+4. You'll be moved to your new action's dashboard. You can set up a an action invocation here,
+test the action (later on) and set up the action implementation.
 
-4. This is the dashboard, where you have to define intents you want to implement and entities for matching intent parameters (slots).
+    Move to Actions - Add your first action - (Custom Intent) Build.
 
+    (You will land on the new Dialogflow agent creation page.)
 
+5. This is the dashboard, where you have to define intents
+you want to implement and entities for matching intent parameters (slots).
+In the simplest form:
+    - define an intent name in 'Intents'.
+    - add some training phrases and annotate parameters (slots).
+    - optionally, add custom entities/parameters. There are a few predefined entities,
+    such as 'sys.given-name' or 'sys.country-code', but you can define you own parameter in the 'Entities' tab.
+    The exemplary intent implementation ('joke-teller' from 'demo' endpoint), for example, uses a mandatory 'joke-type' parameter.
 
+6. Create a new directory (src/$your-endpoint) to contain the implementations of your intents ('src/demo' is an example).
+The intent implementation should accept a parsed request json and return a response to the user.
+(a simple string, the DialogFlow response format is already taken care of).
+The demo implementations should be clear enough.
 
+6. Run the webservice with 'python main $your_endpoint'.
+
+7. (optional) Adjust the CMD in the Dockerfile to use $your-endpoint instead of 'demo'
+if you want to deploy this app somewhere (with ngrok-like tunneling being the alternative).
+
+8. When you move back to [actions console](https://console.actions.google.com/) of your project, choose 'Simulator'.
+It will allow you to test your Action. If you have an Android device, you can test the Action on it,
+as long as you're logged in with the same account. You can also grant this privilege to other Google accounts.
