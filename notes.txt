@@ -27,3 +27,10 @@
  2028  history
 
 """
+
+MUST HAVE:
+notatka o przygotowaniu środowiska
+jak można przetestować na telefonie
+konfiguracja prywatnego gclouda w pracy i test deploymentu
+
+# gcloud app deploy
