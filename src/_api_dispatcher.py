@@ -1,10 +1,10 @@
 import os, glob, importlib
-import  _constants as const
+import _constants as const
 
 _INTENTS = {}
 
 
-def register_intent(intent_name):  # add option - interface=choice['basic', 'full']
+def register_intent(intent_name):
 
     def registerer(intent_handler):
         _INTENTS[intent_name] = intent_handler

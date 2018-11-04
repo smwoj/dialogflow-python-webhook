@@ -6,6 +6,8 @@ from _api_dispatcher import import_intent_handlers
 from dialogflow_spec import make_response
 
 """
+Runs a webservice compliant to the Dialogflow Webhook format.
+
 Usage: 
 python main.py $API_ENDPOINT
 """
@@ -30,14 +32,9 @@ def start(api_endpoint):
             request_data = json.loads(request_data)
 
         intent = request_data['queryResult']['intent']['displayName']
-        params = request_data['queryResult']['parameters']
 
-        msg = intent_handlers[intent](intent, **params)
-
-        return make_response(
-            display_message='',
-            tts_message=msg,
-        )
+        msg = intent_handlers[intent](request_data)
+        return make_response(msg)
 
     app.run(debug=True, host=const.HOST, port=const.PORT)
 
