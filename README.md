@@ -23,10 +23,29 @@ That's where this project comes in.
 
 # What's in this project
 
-A ready-to-go webserver containg an examplary definition of a dead-simple intent fullfillment implementation.
+A ready-to-go webservice containing an exemplary definition 
+of a dead-simple intent fulfillment implementation.
 
 There also a small script mocking DialogFlow requests to allow local testing.
 
 You can deploy it with Google AppEngine, Heroku or any other way you like, 
 but if you're doing this for fun, probably the simplest solution is using 
 [ngrok](https://ngrok.com/) and running the service locally.
+
+# How to make my own Google Assistant "skill" with this repo?
+1. Create a GCloud account and enable billing. 
+There's a generous trial mode, so even though you have to register using your credit card,
+you won't be charged unless you agree to when the trial ends or you exhaust the limits.
+
+2. Create a new project in [https://console.actions.google.com/?pli=1](actions console).
+Skip the choice of the action template (assuming you still want to use this project).
+
+3. You'll be moved to your new action's dashboard. You can set up a an action invocation here, test the action (later on) 
+and set up the action implementation. Move to Actions - Add your first action - (Custom Intent) Build.
+You will land on the new Dialogflow agent creation page.
+
+4. This is the dashboard, where you have to define intents you want to implement and entities for matching intent parameters (slots).
+
+
+
+
