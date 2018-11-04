@@ -1,0 +1,43 @@
+# request example
+{
+  "responseId": "a60f081a-c6c6-43ac-b6c0-9a2bb58ee7b5",
+  "queryResult": {
+    "queryText": "tell me a dirty joke",
+    "parameters": {
+      "joke-type": "dirty"
+    },
+    "allRequiredParamsPresent": true,
+    "intent": {
+      "name": "projects/hackathon-app-220820/agent/intents/5a6f8efc-90b4-4f8a-bb84-a17b7aad2c55",
+      "displayName": "joke-teller"
+    },
+    "intentDetectionConfidence": 1,
+    "languageCode": "en"
+  },
+  "originalDetectIntentRequest": {
+    "payload": {}
+  },
+  "session": "projects/hackathon-app-220820/agent/sessions/c937dbf8-d227-4eba-5dd9-36508dcd6cc5"
+}
+
+
+# response example 1
+{
+  "fulfillmentMessages": [],
+  "fulfillmentText": "",
+  "payload": {
+    "google": {
+      "expectUserResponse": true,
+      "richResponse": {
+        "items": [
+          {
+            "simpleResponse": {
+              "textToSpeech": "As I suspected, someone has been adding soil to my garden. The plot thickens."
+            }
+          }
+        ]
+      }
+    }
+  },
+  "source": "mywebhook.com"
+}
