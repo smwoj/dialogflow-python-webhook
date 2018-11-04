@@ -1,38 +1,11 @@
-1.  "framework" do definiowania intent handlerów:
-    intent example z @register(intent_name)
-    + przykładowe nlu_utterance - Tests.add_mapped(*, intent_name, keys_to_api_test_cases)
-
-
-    class ApiTestCase{
-     NLUUtterance(utterance, slots: dict, validation_strategy: Option[]),
-     response_validator / returned_utterance_validator
-     defaultowy walidator - zawsze daje pass, jeśli dostanie niepustego stringa w response. printuje odpowiedź na stdout
-
-    _gen_request() -> dialogflow_requst;
-    _parse_response() -> json analizowany przez validator
-
-    }
-
-    main pozwalający na przetestowanie intentów
-     -||-                    '$intent_name' lista intentów do przetestowania po whitespace'ie (jak nic nie ma, bierze wszystkie)
-
-     __main__:
-       parsed_tc_keys = ...
-       all_tcs_per_intent = TestCases.get_collection(intent)
-
-       to_test = [all_tcs_per_intent[tc_key] for tc_key in parsed_tc_keys]
-
-       for test_case in parsed_tc_intents:
-            try:
-                test_case.perform()
-            except Exception as e:
-                logging.critical(f"Test case threw: {e}")
-
-
-
+dopieszczenie kodu
+curlowe testy
+normalny response w argumencie, namedtuple(?) jako response
 
 2.
+MUST HAVE:
+notatka o przygotowaniu środowiska
+jak można przetestować na telefonie
+konfiguracja prywatnego gclouda w pracy i test deploymentu
 
-
-# NICE to have
-# wrzucanie w response obrazków (xkcd ?)
+# gcloud app deploy

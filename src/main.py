@@ -3,6 +3,7 @@ from flask import Flask, jsonify, request
 
 import _constants as const
 from _api_dispatcher import import_intent_handlers
+from dialogflow_spec import make_response
 
 """
 Usage: 
@@ -33,8 +34,6 @@ def start(api_endpoint):
 
         msg = intent_handlers[intent](intent, **params)
 
-
-        from dialogflow_spec import make_response
         return make_response(
             display_message='',
             tts_message=msg,
