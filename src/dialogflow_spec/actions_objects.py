@@ -1,10 +1,7 @@
-from collections import UserDict
-
 # https://developers.google.com/actions/assistant/responses
 
 
-class GAButton(UserDict):
-    # json-serializable out-of-the box
+class GAButton(dict):
     """
        {
             "title": "Read more",
@@ -25,30 +22,30 @@ class GAButton(UserDict):
         })
 
 
-class GACard(UserDict):
+class GACard(dict):
     """
     {
-                "basicCard": {
-                    "title": "Crying cat meme",
-                    "formattedText": "Dank memes are dank.",
-                    "image": {
-                        "url": "https://i.kym-cdn.com/entries/icons/mobile/000/026/489/crying.jpg",
-                        # "accessibilityText": "This is a cat."
-                        },
-                    "buttons": [
-                        {
-                            "title": "Read more",
-                            "openUrlAction": {
-                                "url": "https://knowyourmeme.com/memes/crying-cat"
-                            }
-                        }
-                    ],
-                    "imageDisplayOptions": "CROPPED"
+        "basicCard": {
+            "title": "Crying cat meme",
+            "formattedText": "Dank memes are dank.",
+            "image": {
+                "url": "https://i.kym-cdn.com/entries/icons/mobile/000/026/489/crying.jpg",
+                # "accessibilityText": "This is a cat."
+                },
+            "buttons": [
+                {
+                    "title": "Read more",
+                    "openUrlAction": {
+                        "url": "https://knowyourmeme.com/memes/crying-cat"
+                    }
                 }
-            }
+            ],
+            "imageDisplayOptions": "CROPPED"
+        }
+    }
     """
 
-    def __init__(self, *, title, formatted_text, buttons,
+    def __init__(self, *, title, formatted_text, buttons, image_url,
                  image_display='CROPPED'):
         super().__init__()
         self.update({
@@ -56,8 +53,7 @@ class GACard(UserDict):
                 "title": title,
                 "formattedText": formatted_text,
                 "image": {
-                    "url": "https://i.kym-cdn.com/entries/icons/mobile/000/026/489/crying.jpg",
-                    "accessibilityText": "DIZ IS A CAT."
+                    "url": image_url,
                     },
                 "buttons": [
                     *buttons
@@ -67,7 +63,7 @@ class GACard(UserDict):
         })
 
 
-class GACarouselTile(UserDict):
+class GACarouselTile(dict):
     """
       {
         "title": "Title of item 1",
@@ -82,7 +78,6 @@ class GACarouselTile(UserDict):
         }
       }
     """
-
     def __init__(self, *, title, description,
                  footer=None, image_url=None, open_url=None):
         super().__init__()
@@ -104,39 +99,7 @@ class GACarouselTile(UserDict):
             }
 
 
-class GACarousel(UserDict):
-    """
-    {
-                  "carouselBrowse": {
-                    "items": [
-                      {
-                        "title": "Title of item 1",
-                        "description": "Description of item 1",
-                        "footer": "Item 1 footer",
-                        "image": {
-                          "url": "https://www.gstatic.com/mobilesdk/170329_assistant/assistant_color_96dp.png",
-                          "accessibilityText": "Google Assistant Bubbles"
-                        },
-                        "openUrlAction": {
-                          "url": "https://github.com"
-                        }
-                      },
-                      {
-                        "title": "Title of item 2",
-                        "description": "Description of item 2",
-                        "footer": "Item 2 footer",
-                        "image": {
-                          "url": "https://www.gstatic.com/mobilesdk/170329_assistant/assistant_color_96dp.png",
-                          "accessibilityText": "Google Assistant Bubbles"
-                        },
-                        "openUrlAction": {
-                          "url": "https://google.com"
-                        }
-                      }
-                    ]
-                  }
-
-    """
+class GACarousel(dict):
     def __init__(self, *, tiles):
         super().__init__()
         items = list(tiles)

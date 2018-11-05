@@ -26,13 +26,19 @@ _MEME_TYPES_TO_CAROUSELS = {
             ),
         ]
     ),
-    'happy': GACarousel(
+    'animal': GACarousel(
         tiles=[
             GACarouselTile(
                 title='Doge',
                 description='''Doge is a slang term for "dog" that is primarily associated with pictures of Shiba Inus (nicknamed "Shibe") and internal monologue captions on Tumblr. These photos may be photoshopped to change the dog's face or captioned with interior monologues in Comic Sans font.''',
                 image_url='https://i.kym-cdn.com/photos/images/masonry/000/581/296/c09.jpg',
                 open_url='https://knowyourmeme.com/memes/doge'
+            ),
+            GACarouselTile(
+                title='Confession Bear',
+                description='''Confession Bear is an advice animal image macro series featuring a photo of a Malayan sun bear leaning against a log. The images are captioned with confessions about taboo behaviors and controversial opinions that are often kept secret for fear of being ostracized.''',
+                image_url='https://i.kym-cdn.com/entries/icons/mobile/000/010/639/confessbear.jpg',
+                open_url='https://knowyourmeme.com/memes/confession-bear'
             ),
         ]
     ),
@@ -45,7 +51,7 @@ def meme_recommendations_handler(request_data):
 
     meme_type_to_response = {
         'sad': 'There is a great choice of sad memes, have a look.',
-        'happy': "I've got something here for ya!",
+        'animal': "I've got something here for you!",
     }
     message = meme_type_to_response.get(params['meme-type'])
 
