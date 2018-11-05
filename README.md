@@ -3,17 +3,17 @@
 Python implementation of a simple Flask-based webhook for dialogflow agent.
 
 It's designed with experimentation in mind and quite a bare-bones solution, 
-but allows you to make a simple, but highly extensible voice assistant reachable from your Android device in 30 minutes.
+yet allows you to make a simple, but highly extensible voice assistant reachable from your Android device in 30 minutes.
 
 # How does it work?
 Custom Google Action can be implemented in Dialogflow, which is an out-of-the-box Google's NLU solution.
 
 Simply speaking, when you speak to your custom Google Action, Google assistant takes care of speech recognition 
-and forwards the utterance to the DialogFlow agent.
-DialogFlow performs NLU and attempts to match an intent defined for a given agent (agents are in 1:1 relation to Google Assistant).
+and forwards the utterance to the Dialogflow agent. DialogFfow performs NLU and attempts to match an intent defined 
+for a given agent (agents are in 1:1 relation to Google Assistant).
 
-Intents are defined within the DialogFlow agent. Intent definition requires training utterances (obviously), 
-slots definition and fulfillment method, which is called when a user utters a sentence matching this intent.
+Intents are defined within the Dialogflow agent. Intent definition requires training utterances (obviously), 
+slots definition and a fulfillment method, which is called when a user utters a sentence matching given intent.
 
 One of the fulfillment possibilities is providing your own webhook. Dialogflow will send a POST request to a webservice you provide.
 This request will contain all the data related to the user's utterance (full utterance, matched slots, conversation id and others).
@@ -39,11 +39,11 @@ but if you're doing this for fun, probably the simplest solution is using
 There's a generous trial period, so even though you have to register using your credit card,
 you won't be charged unless you agree to when the trial ends or you exhaust the limits.
 
-3. Create a new project in [actions console](https://console.actions.google.com/).
+3. Create a new project in the [actions console](https://console.actions.google.com/).
 Skip the choice of the action template (assuming you still want to use this project).
 
-4. You'll be moved to your new action's dashboard. You can set up a an action invocation here,
-test the action (later on) and set up the action implementation.
+4. You'll be shown a new action's dashboard. You can set up a an action invocation here,
+test the action (more on this later on) and set up the action implementation.
 
     Move to Actions - Add your first action - (Custom Intent) Build.
 
@@ -60,7 +60,7 @@ In the simplest form:
 
 6. Create a new directory (src/$your-endpoint) to contain the implementations of your intents ('src/demo' is an example).
 The intent implementation should accept a parsed request json and return a response to the user.
-(a simple string, the DialogFlow response format is already taken care of).
+(a simple string, the Dialogflow response format is already taken care of).
 The demo implementations should be clear enough.
 
 6. Run the webservice with 'python main $your_endpoint'.
