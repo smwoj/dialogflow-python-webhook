@@ -30,7 +30,7 @@ class GACard(dict):
             "formattedText": "Dank memes are dank.",
             "image": {
                 "url": "https://i.kym-cdn.com/entries/icons/mobile/000/026/489/crying.jpg",
-                # "accessibilityText": "This is a cat."
+                "accessibilityText": "This is a cat."
                 },
             "buttons": [
                 {
@@ -45,7 +45,7 @@ class GACard(dict):
     }
     """
 
-    def __init__(self, *, title, formatted_text, buttons, image_url,
+    def __init__(self, *, title, formatted_text, buttons, image_url, image_hint='',
                  image_display='CROPPED'):
         super().__init__()
         self.update({
@@ -54,7 +54,8 @@ class GACard(dict):
                 "formattedText": formatted_text,
                 "image": {
                     "url": image_url,
-                    },
+                    "accessibilityText": image_hint
+                },
                 "buttons": [
                     *buttons
                 ],
@@ -79,7 +80,8 @@ class GACarouselTile(dict):
       }
     """
     def __init__(self, *, title, description,
-                 footer=None, image_url=None, open_url=None):
+                 footer=None, image_url=None, image_hint='nothing',
+                 open_url=None):
         super().__init__()
         self.update({
             "title": title,
@@ -91,6 +93,7 @@ class GACarouselTile(dict):
         if image_url is not None:
             self['image'] = {
                 "url": image_url,
+                "accessibilityText": image_hint
             }
 
         if open_url is not None:
@@ -102,14 +105,14 @@ class GACarouselTile(dict):
 class GACarousel(dict):
     def __init__(self, *, tiles):
         super().__init__()
-        items = list(tiles)
+        tiles = list(tiles)
         # all tiles must have the same elements
 
-        tile_keys = set(items[0].keys())
+        tile_keys = set(tiles[0].keys())
         assert all(tile_keys == set(tile.keys()) for tile in tiles)
 
         self.update({
             "carouselBrowse": {
-                "items": [*items]
+                "items": [*tiles]
             }
         })

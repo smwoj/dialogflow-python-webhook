@@ -1,6 +1,6 @@
 from _api_dispatcher import register_intent
 from dialogflow_spec import make_response
-from dialogflow_spec.actions_objects import GACarouselTile, GACarousel
+from dialogflow_spec.widgets import GACarouselTile, GACarousel
 
 
 _MEME_TYPES_TO_CAROUSELS = {
