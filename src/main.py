@@ -33,8 +33,8 @@ def start(api_endpoint):
 
         intent = request_data['queryResult']['intent']['displayName']
 
-        msg = intent_handlers[intent](request_data)
-        return make_response(msg)
+        response = intent_handlers[intent](request_data)
+        return response
 
     app.run(debug=True, host=const.HOST, port=const.PORT)
 
