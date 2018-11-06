@@ -24,6 +24,11 @@ def make_request(nlu_utterance, intent, parameters=None):
 
 
 def make_response(tts_msg, *ga_objects):
+    """
+    :param tts_msg: string to be passed to TTS
+    :param ga_objects: iterable of ValidResponsePieces (either GACard of GACarousel)
+    :return: json-encoded response to Dialogflow request
+    """
     response = {
         "fulfillmentText": '',
         "fulfillmentMessages": [],

@@ -1,6 +1,44 @@
 # https://developers.google.com/actions/assistant/responses
 
 
+class GACarouselTile(dict):
+    """
+      {
+        "title": "Title of item 1",
+        "description": "Description of item 1",
+        "footer": "Item 1 footer",
+        "image": {
+          "url": "https://www.gstatic.com/mobilesdk/170329_assistant/assistant_color_96dp.png",
+          "accessibilityText": "Google Assistant Bubbles"
+        },
+        "openUrlAction": {
+          "url": "https://github.com"
+        }
+      }
+    """
+    def __init__(self, *, title, description,
+                 footer=None, image_url=None, image_hint='nothing',
+                 open_url=None):
+        super().__init__()
+        self.update({
+            "title": title,
+            "description": description
+        })
+        if footer is not None:
+            self['footer'] = footer
+
+        if image_url is not None:
+            self['image'] = {
+                "url": image_url,
+                "accessibilityText": image_hint
+            }
+
+        if open_url is not None:
+            self['openUrlAction'] = {
+                "url": open_url
+            }
+
+
 class GAButton(dict):
     """
        {
@@ -22,7 +60,11 @@ class GAButton(dict):
         })
 
 
-class GACard(dict):
+class ValidResponsePiece(dict):
+    pass
+
+
+class GACard(ValidResponsePiece):
     """
     {
         "basicCard": {
@@ -64,45 +106,7 @@ class GACard(dict):
         })
 
 
-class GACarouselTile(dict):
-    """
-      {
-        "title": "Title of item 1",
-        "description": "Description of item 1",
-        "footer": "Item 1 footer",
-        "image": {
-          "url": "https://www.gstatic.com/mobilesdk/170329_assistant/assistant_color_96dp.png",
-          "accessibilityText": "Google Assistant Bubbles"
-        },
-        "openUrlAction": {
-          "url": "https://github.com"
-        }
-      }
-    """
-    def __init__(self, *, title, description,
-                 footer=None, image_url=None, image_hint='nothing',
-                 open_url=None):
-        super().__init__()
-        self.update({
-            "title": title,
-            "description": description
-        })
-        if footer is not None:
-            self['footer'] = footer
-
-        if image_url is not None:
-            self['image'] = {
-                "url": image_url,
-                "accessibilityText": image_hint
-            }
-
-        if open_url is not None:
-            self['openUrlAction'] = {
-                "url": open_url
-            }
-
-
-class GACarousel(dict):
+class GACarousel(ValidResponsePiece):
     def __init__(self, *, tiles):
         super().__init__()
         tiles = list(tiles)
