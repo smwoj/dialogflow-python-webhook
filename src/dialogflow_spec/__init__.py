@@ -23,10 +23,15 @@ def make_request(nlu_utterance, intent, parameters=None):
     return json.dumps(request)
 
 
-def make_response(message, fullfillment_text='fullfillment text'):
+def make_response(tts_msg, *ga_objects):
+    """
+    :param tts_msg: string to be passed to TTS
+    :param ga_objects: iterable of ValidResponsePieces (either GACard of GACarousel)
+    :return: json-encoded response to Dialogflow request
+    """
     response = {
-        "fulfillmentText": fullfillment_text,
-        "fulfillmentMessages": ['fullfillment message 1'],
+        "fulfillmentText": '',
+        "fulfillmentMessages": [],
         "source": "hackathon-webhook.com",
         "payload": {
             "google": {
@@ -35,9 +40,10 @@ def make_response(message, fullfillment_text='fullfillment text'):
                     "items": [
                         {
                             "simpleResponse": {
-                                "textToSpeech": message,
+                                "textToSpeech": tts_msg,
                             }
-                        }
+                        },
+                        *ga_objects
                     ]
                 }
             },

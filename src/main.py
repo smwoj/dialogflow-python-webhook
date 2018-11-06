@@ -3,7 +3,6 @@ from flask import Flask, jsonify, request
 
 import _constants as const
 from _api_dispatcher import import_intent_handlers
-from dialogflow_spec import make_response
 
 """
 Runs a webservice compliant to the Dialogflow Webhook format.
@@ -33,8 +32,8 @@ def start(api_endpoint):
 
         intent = request_data['queryResult']['intent']['displayName']
 
-        msg = intent_handlers[intent](request_data)
-        return make_response(msg)
+        response = intent_handlers[intent](request_data)
+        return response
 
     app.run(debug=True, host=const.HOST, port=const.PORT)
 
